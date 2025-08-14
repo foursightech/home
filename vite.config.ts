@@ -3,7 +3,7 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 
-const repoName = "LandingPage";
+const repoName = "home";
 
 export default defineConfig(({ mode }) => ({
   server: {

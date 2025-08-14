@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, Phone, Building2, Loader2, CheckCircle2 } from "lucide-react";
+import { Mail, Building2, Loader2, CheckCircle2 } from "lucide-react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -67,8 +67,7 @@ const Contact = () => {
     setIsSuccess(false);
 
     try {
-      // Replace with your backend endpoint for sending emails
-      const response = await fetch("/api/send-email", {
+      const response = await fetch("https://formspree.io/f/xldlvlvg", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
