@@ -1,73 +1,119 @@
-# Welcome to your Lovable project
+# foursightech/home
 
-## Project info
+## Overview
 
-**URL**: https://lovable.dev/projects/4054663c-8a37-459f-b857-7b7795715807
+This repository is a React-based web application built with **Vite**, **TypeScript**, **Tailwind CSS**, and **shadcn-ui**. It serves as the base “home” application for future development and customization.
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## Table of Contents
 
-**Use Lovable**
+- [Getting Started](#getting-started)
+- [Development Workflow](#development-workflow)
+- [Technologies Used](#technologies-used)
+- [Deployment](#deployment)
+- [Custom Domain Setup](#custom-domain-setup)
+- [Contributing](#contributing)
+- [Repository Structure](#repository-structure)
+- [License](#license)
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/4054663c-8a37-459f-b857-7b7795715807) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## Getting Started
 
-**Use your preferred IDE**
+### Prerequisites
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- **Node.js** (v18 or later recommended)
+- **npm** (comes with Node.js) or **yarn**
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Installation
 
-Follow these steps:
+```bash
+git clone <REPO_URL>
+cd home
+npm install
+```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### Running the Development Server
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The app will be available at **http://localhost:5173** (default Vite port).
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+---
 
-**Use GitHub Codespaces**
+## Development Workflow
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+- Edit files in the `src/` directory.
+- The development server supports **hot module replacement (HMR)**, so changes will update instantly in the browser.
+- Use `npm run build` to create an optimized production build in the `dist/` folder.
 
-## What technologies are used for this project?
+---
 
-This project is built with:
+## Technologies Used
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- **React** – UI library
+- **Vite** – next-generation frontend tooling
+- **TypeScript** – type-safe JavaScript
+- **shadcn-ui** – prebuilt and customizable UI components
+- **Tailwind CSS** – utility-first styling framework
 
-## How can I deploy this project?
+---
 
-Simply open [Lovable](https://lovable.dev/projects/4054663c-8a37-459f-b857-7b7795715807) and click on Share -> Publish.
+## Deployment
 
-## Can I connect a custom domain to my Lovable project?
+To deploy the app, build it and serve the static files with your hosting provider of choice (e.g., Netlify, Vercel, Cloudflare Pages, AWS S3 + CloudFront):
 
-Yes, you can!
+```bash
+npm run build
+```
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+The production-ready files will be in the `dist/` folder.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+---
+
+## Custom Domain Setup
+
+Once deployed, configure your DNS provider to point your domain to your hosting service. Refer to your hosting provider’s documentation for specifics.
+
+---
+
+## Contributing
+
+1. Fork the repository
+2. Create a new branch:
+   ```bash
+   git checkout -b feature/my-feature
+   ```
+3. Commit your changes:
+   ```bash
+   git commit -m "Add my feature"
+   ```
+4. Push to the branch:
+   ```bash
+   git push origin feature/my-feature
+   ```
+5. Open a pull request
+
+---
+
+## Repository Structure
+
+```text
+├── public/                # Static assets
+├── src/                   # Source code
+│   ├── components/        # Reusable UI components
+│   ├── pages/             # Page-level components
+│   └── main.tsx           # Application entry point
+├── .gitignore
+├── eslint.config.js
+├── index.html
+├── package.json
+├── postcss.config.js
+├── tailwind.config.ts
+├── tsconfig.json
+├── tsconfig.node.json
+└── vite.config.ts
+```
