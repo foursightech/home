@@ -9,9 +9,9 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    phone: "",
-    businessName: "",
-    message: "",
+    phone_number: "", // renamed (was phone)
+    business_name: "", // renamed (was businessName)
+    project_details: "", // renamed (was message)
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -28,7 +28,8 @@ const Contact = () => {
   };
 
   const validateForm = () => {
-    const { name, email, phone, businessName, message } = formData;
+    const { name, email, phone_number, business_name, project_details } =
+      formData;
 
     if (!name.trim()) {
       toast({ title: "Please enter your name", variant: "destructive" });
@@ -38,22 +39,22 @@ const Contact = () => {
       toast({ title: "Please enter a valid email", variant: "destructive" });
       return false;
     }
-    if (phone && !/^\+?[0-9]{7,15}$/.test(phone)) {
+    if (phone_number && !/^\+?[0-9]{7,15}$/.test(phone_number)) {
       toast({
         title: "Please enter a valid phone number",
         variant: "destructive",
       });
       return false;
     }
-    if (!businessName.trim()) {
+    if (!business_name.trim()) {
       toast({
         title: "Please enter your business name",
         variant: "destructive",
       });
       return false;
     }
-    if (!message.trim()) {
-      toast({ title: "Please enter a message", variant: "destructive" });
+    if (!project_details.trim()) {
+      toast({ title: "Please enter project details", variant: "destructive" });
       return false;
     }
     return true;
@@ -67,11 +68,15 @@ const Contact = () => {
     setIsSuccess(false);
 
     try {
-      const response = await fetch("https://formspree.io/f/xldlvlvg", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        import.meta.env.VITE_API_URL ||
+          "https://naman.tail8718b4.ts.net/api/formdata",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        }
+      );
 
       if (!response.ok) throw new Error("Failed to send");
 
@@ -79,9 +84,9 @@ const Contact = () => {
       setFormData({
         name: "",
         email: "",
-        phone: "",
-        businessName: "",
-        message: "",
+        phone_number: "",
+        business_name: "",
+        project_details: "",
       });
     } catch (error) {
       toast({
@@ -163,8 +168,8 @@ const Contact = () => {
                         Phone Number
                       </label>
                       <Input
-                        name="phone"
-                        value={formData.phone}
+                        name="phone_number"
+                        value={formData.phone_number}
                         onChange={handleInputChange}
                         placeholder="+91 98765 43210"
                       />
@@ -174,8 +179,8 @@ const Contact = () => {
                         Business Name *
                       </label>
                       <Input
-                        name="businessName"
-                        value={formData.businessName}
+                        name="business_name"
+                        value={formData.business_name}
                         onChange={handleInputChange}
                         placeholder="Your Business LLC"
                         required
@@ -188,8 +193,8 @@ const Contact = () => {
                       Project Details *
                     </label>
                     <Textarea
-                      name="message"
-                      value={formData.message}
+                      name="project_details"
+                      value={formData.project_details}
                       onChange={handleInputChange}
                       placeholder="Tell us about your business and what kind of website you need..."
                       rows={5}
